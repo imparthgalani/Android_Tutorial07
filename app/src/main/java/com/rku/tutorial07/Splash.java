@@ -29,10 +29,10 @@ public class Splash extends AppCompatActivity {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(Splash.this,Login.class);
+                Intent intent = new Intent(Splash.this, Login.class);
                 startActivity(intent);
                 finish();
             }
-        },2000);
+        }, 2000);
     }
 }

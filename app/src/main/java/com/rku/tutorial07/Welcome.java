@@ -26,7 +26,7 @@ public class Welcome extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         txtWelcomeMessage = findViewById(R.id.txtWelcomeMessage);
-        preferences = getSharedPreferences("college",MODE_PRIVATE);
+        preferences = getSharedPreferences("college", MODE_PRIVATE);
         editor = preferences.edit();
 
         Intent intent = getIntent();
@@ -47,17 +47,17 @@ public class Welcome extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.cutsome_menu,menu);
+        getMenuInflater().inflate(R.menu.cutsome_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.mnuLogout:
                 editor.remove("isLogin");
                 editor.commit();
-                Intent intent = new Intent(Welcome.this,Login.class);
+                Intent intent = new Intent(Welcome.this, Login.class);
                 startActivity(intent);
                 finish();
                 break;

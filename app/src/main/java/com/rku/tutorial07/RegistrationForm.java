@@ -28,7 +28,7 @@ public class RegistrationForm extends AppCompatActivity {
     }
 
     public void saveRecord(View view) {
-        String  ValUsername, ValPassword;
+        String ValUsername, ValPassword;
 
         ValUsername = edtUsername.getText().toString();
         ValPassword = edtPassword.getText().toString();
@@ -64,7 +64,7 @@ public class RegistrationForm extends AppCompatActivity {
         }
 
         Intent intent = new Intent(RegistrationForm.this, Welcome.class);
-        intent.putExtra("username",ValUsername);
+        intent.putExtra("username", ValUsername);
         startActivity(intent);
     }
 

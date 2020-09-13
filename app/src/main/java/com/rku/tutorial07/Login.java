@@ -21,7 +21,7 @@ public class Login extends AppCompatActivity {
 
     private EditText edtUsername, edtPassword;
     private Button btnLogin;
-  //  CheckBox rememberMe;
+    //  CheckBox rememberMe;
     DatabaseHelper databaseHelper;
 
     SharedPreferences preferences;
@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
         edtPassword = (EditText) findViewById(R.id.edtPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
 
-       // rememberMe = findViewById(R.id.rememberMe);
+        // rememberMe = findViewById(R.id.rememberMe);
         preferences = getSharedPreferences("college", MODE_PRIVATE);
         editor = preferences.edit();
 
@@ -70,12 +70,12 @@ public class Login extends AppCompatActivity {
                     return;
                 }
 
-                if (TextUtils.isEmpty(ValPassword)){
+                if (TextUtils.isEmpty(ValPassword)) {
                     edtPassword.setError("Password is Required.");
                     return;
                 }
 
-                if (ValPassword.length() <6){
+                if (ValPassword.length() < 6) {
                     edtPassword.setError("Password Must be >= 6 Characters");
                     return;
                 }
@@ -83,9 +83,9 @@ public class Login extends AppCompatActivity {
 
                 Boolean res = databaseHelper.checkUser(ValUsername, ValPassword);
 
-                if(res == true) {
+                if (res == true) {
 
-                    /*   -----SHARE PREFERENCES-----*/
+                    /*   -----SHARE PREFERENCES----- */
 
                     editor.putString("username", ValUsername);
                     editor.putString("password", ValPassword);
@@ -94,14 +94,12 @@ public class Login extends AppCompatActivity {
 
                     /* -----END SHARE PREFERENCES----- */
 
-                    Intent HomePage = new Intent(Login.this,Welcome.class);
+                    Intent HomePage = new Intent(Login.this, Welcome.class);
                     HomePage.putExtra("username", ValUsername);
                     startActivity(HomePage);
                     Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(Login.this,"Username or Password is wrong.",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Login.this, "Username or Password is wrong.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
