@@ -22,8 +22,6 @@ public class Login extends AppCompatActivity {
     private Button btnLogin;
     CheckBox rememberMe;
     DatabaseHelper databaseHelper;
-    SQLiteDatabase db;
-    Cursor cursor;
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -35,7 +33,6 @@ public class Login extends AppCompatActivity {
         this.setTitle("Login Form");
 
         databaseHelper = new DatabaseHelper(this);
-        db = databaseHelper.getReadableDatabase();
 
         edtUsername = (EditText) findViewById(R.id.edtUsername);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
@@ -71,33 +68,6 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Email address format is not valid", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-//                cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE + " WHERE " + DatabaseHelper.COL_2 + "=? AND " + DatabaseHelper.COL_3 + "=?", new String[]{ValUsername,ValPassword});
-//                if (cursor != null) {
-//                    if (cursor.getCount() > 0)
-//                        cursor.moveToNext();
-//
-//                    if(rememberMe.isChecked()){
-//                        editor.putString("username",ValUsername);
-//                        editor.putString("password",ValPassword);
-//                        editor.putString("isLogin",ValLogin);
-//                    }else{
-//                        editor.putString("username","");
-//                        editor.putString("password","");
-//                        editor.putString("isLogin","");
-//                    }
-//                    editor.commit();
-//
-//                    Intent intent = new Intent(Login.this, Welcome.class);
-//                    intent.putExtra("username",ValUsername);
-//                    startActivity(intent);
-//
-//                    Toast.makeText(Login.this, "Login SuccessFully", Toast.LENGTH_SHORT).show();
-//
-//                } else {
-//                    Toast.makeText(Login.this, "No User Found", Toast.LENGTH_SHORT).show();
-//                }
-
 
                 if (ValUsername.equals("admin@gmail.com") && ValPassword.equals("123456")) {
                     Log.i("Login Screen", "in onClick if");

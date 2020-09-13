@@ -1,18 +1,11 @@
 package com.rku.tutorial07;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +33,6 @@ public class RegistrationForm extends AppCompatActivity {
         ValUsername = edtUsername.getText().toString();
         ValPassword = edtPassword.getText().toString();
 
-
         /*------------------- Validation Start ---------------------*/
 
         if (TextUtils.isEmpty(ValUsername)) {
@@ -65,42 +57,19 @@ public class RegistrationForm extends AppCompatActivity {
 
         /*------------------- Validation End ---------------------*/
 
-
-
         if (databaseHelper.insertData(ValUsername, ValPassword)) {
             Toast.makeText(this, "User Created", Toast.LENGTH_SHORT).show();
             edtUsername.setText("");
             edtPassword.setText("");
         }
+
         Intent intent = new Intent(RegistrationForm.this, Welcome.class);
         intent.putExtra("username",ValUsername);
         startActivity(intent);
-
     }
 
-
-//    public void saveRecord(View view) {
-//        Cursor cursor = databaseHelper.selectData();
-//        String data = "";
-//        if (cursor != null && cursor.getCount() > 0) {
-//            cursor.moveToFirst();
-//            do {
-//                String username = cursor.getString(3);
-//                String password = cursor.getString(4);
-//
-//                data += username + " " + password + " \n";
-//
-//            } while (cursor.moveToNext());
-//
-//            /* txtData.setText(data);*/
-//
-//            Intent intent = new Intent(RegistrationForm.this, Welcome.class);
-//            intent.putExtra("username", data);
-//            startActivity(intent);
-//
-//        } else {
-//            Toast.makeText(this, "No Record Found", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-
+    public void btnLogin(View view) {
+        Intent intent = new Intent(RegistrationForm.this, Login.class);
+        startActivity(intent);
+    }
 }
