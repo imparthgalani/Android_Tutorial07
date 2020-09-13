@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -20,7 +21,7 @@ public class Login extends AppCompatActivity {
 
     private EditText edtUsername, edtPassword;
     private Button btnLogin;
-    CheckBox rememberMe;
+  //  CheckBox rememberMe;
     DatabaseHelper databaseHelper;
 
     SharedPreferences preferences;
@@ -38,7 +39,7 @@ public class Login extends AppCompatActivity {
         edtPassword = (EditText) findViewById(R.id.edtPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
 
-        rememberMe = findViewById(R.id.rememberMe);
+       // rememberMe = findViewById(R.id.rememberMe);
         preferences = getSharedPreferences("college", MODE_PRIVATE);
         editor = preferences.edit();
 
@@ -65,52 +66,83 @@ public class Login extends AppCompatActivity {
                 Log.i("Login Screen", "In Onclick");
 
                 if (!Patterns.EMAIL_ADDRESS.matcher(ValUsername).matches()) {
-                    Toast.makeText(Login.this, "Email address format is not valid", Toast.LENGTH_SHORT).show();
+                    edtUsername.setError("Email address format is not valid");
                     return;
                 }
 
-                if (ValUsername.equals("admin@gmail.com") && ValPassword.equals("123456")) {
-                    Log.i("Login Screen", "in onClick if");
+                if (TextUtils.isEmpty(ValPassword)){
+                    edtPassword.setError("Password is Required.");
+                    return;
+                }
 
-                    /* -----SHARE PREFERENCES-----*/
+                if (ValPassword.length() <6){
+                    edtPassword.setError("Password Must be >= 6 Characters");
+                    return;
+                }
+
+
+                Boolean res = databaseHelper.checkUser(ValUsername, ValPassword);
+                if(res == true) {
+
+                    /*   -----SHARE PREFERENCES-----*/
 
                     editor.putString("username", ValUsername);
                     editor.putString("password", ValPassword);
                     editor.putString("isLogin", ValLogin);
                     editor.commit();
 
-                    /* -----END SHARE PREFERENCES-----*/
+                    /* -----END SHARE PREFERENCES----- */
 
-                    /*   -----REMEMBER ME-----*/
-
-                    if (rememberMe.isChecked()) {
-                        editor.putString("username", ValUsername);
-                        editor.putString("password", ValPassword);
-                        editor.putString("isLogin", ValLogin);
-                    } else {
-                        editor.putString("username", "");
-                        editor.putString("password", "");
-                        editor.putString("isLogin", "");
-                    }
-                    editor.commit();
-
-                    /* -----END REMEMBER ME----- */
-
-                    Intent intent = new Intent(Login.this, Welcome.class);
-                    intent.putExtra("username", ValUsername);
-                    startActivity(intent);
-                    finish();
-
+                    Intent HomePage = new Intent(Login.this,Welcome.class);
+                    HomePage.putExtra("username", ValUsername);
+                    startActivity(HomePage);
                     Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                } else {
-
-                    Toast.makeText(Login.this, "Username or Password is wrong.", Toast.LENGTH_SHORT).show();
-                    Log.i("Login Screen", "In Onclick");
                 }
+                else
+                {
+                    Toast.makeText(Login.this,"Username or Password is wrong.",Toast.LENGTH_SHORT).show();
+                }
+//                if (ValUsername.equals("admin@gmail.com") && ValPassword.equals("123456")) {
+//                    Log.i("Login Screen", "in onClick if");
+//
+//                    /* -----SHARE PREFERENCES-----*/
+//
+//                    editor.putString("username", ValUsername);
+//                    editor.putString("password", ValPassword);
+//                    editor.putString("isLogin", ValLogin);
+//                    editor.commit();
+//
+//                    /* -----END SHARE PREFERENCES-----*/
+//
+//                    /*   -----REMEMBER ME-----*/
+//
+//                    if (rememberMe.isChecked()) {
+//                        editor.putString("username", ValUsername);
+//                        editor.putString("password", ValPassword);
+//                        editor.putString("isLogin", ValLogin);
+//                    } else {
+//                        editor.putString("username", "");
+//                        editor.putString("password", "");
+//                        editor.putString("isLogin", "");
+//                    }
+//                    editor.commit();
+//
+//                    /* -----END REMEMBER ME----- */
+//
+//                    Intent intent = new Intent(Login.this, Welcome.class);
+//                    intent.putExtra("username", ValUsername);
+//                    startActivity(intent);
+//                    finish();
+//
+//                    Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+//                } else {
+//
+//                    Toast.makeText(Login.this, "Username or Password is wrong.", Toast.LENGTH_SHORT).show();
+//                    Log.i("Login Screen", "In Onclick");
+//                }
             }
         });
     }
-
 
     public void btnSignUp(View view) {
         Intent intent = new Intent(Login.this, RegistrationForm.class);

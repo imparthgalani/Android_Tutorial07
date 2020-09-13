@@ -94,19 +94,19 @@
                     android:ems="10"
                     android:fontFamily="serif"
                     android:hint="@string/enter_password"
+                    android:maxLength="16"
                     android:inputType="textPassword" />
             </LinearLayout>
 
-            <CheckBox
-                android:id="@+id/rememberMe"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="4dp"
-                android:text="Remember Me"
-                android:textColor="#403A3A"
-                android:textSize="18sp"
-                android:checked="true"/>
+<!--            <CheckBox
+            android:id="@+id/rememberMe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:text="Remember Me"
+            android:textColor="#403A3A"
+            android:textSize="18sp"/>-->
 
             <Button
                 android:id="@+id/btnLogin"
