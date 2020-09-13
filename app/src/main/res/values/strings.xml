@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Tutorial 07</string>
+    <string name="Login">Login</string>
+    <string name="Home">Home</string>
+    <string name="lblTitle">Login Form</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="enter_email_address">Enter email address</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter Password</string>
+
+    <string-array name="city_name">
+        <item>Select City</item>
+        <item>Amreli</item>
+        <item>Rajkot</item>
+        <item>Bhavnagar</item>
+        <item>Botad</item>
+    </string-array>
+</resources>

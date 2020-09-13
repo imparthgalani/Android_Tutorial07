@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1D1A2F</color>
+    <color name="colorPrimaryDark">#1A162B</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="background">#1D1A2F</color>
+
+    <color name="Melanzane">#252425</color>
+    <color name="Cinnabar">#F14336</color>
+    <color name="LimeGreen">#28B446</color>
+    <color name="CornflowerBlue">#518EF8</color>
+    <color name="TangerineYellow">#FBBB00</color>
+    <color name="Mariner">#3B5998</color>
+    <color name="Nero">#1A1A1A</color>
+    <color name="BaliHai">#8A9EAD</color>
+    <color name="White">#FAFAFA</color>
+    <color name="GreyChateau">#959CA7</color>
+</resources>
