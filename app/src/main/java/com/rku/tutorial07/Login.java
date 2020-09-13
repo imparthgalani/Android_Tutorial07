@@ -82,6 +82,7 @@ public class Login extends AppCompatActivity {
 
 
                 Boolean res = databaseHelper.checkUser(ValUsername, ValPassword);
+
                 if(res == true) {
 
                     /*   -----SHARE PREFERENCES-----*/
@@ -102,44 +103,6 @@ public class Login extends AppCompatActivity {
                 {
                     Toast.makeText(Login.this,"Username or Password is wrong.",Toast.LENGTH_SHORT).show();
                 }
-//                if (ValUsername.equals("admin@gmail.com") && ValPassword.equals("123456")) {
-//                    Log.i("Login Screen", "in onClick if");
-//
-//                    /* -----SHARE PREFERENCES-----*/
-//
-//                    editor.putString("username", ValUsername);
-//                    editor.putString("password", ValPassword);
-//                    editor.putString("isLogin", ValLogin);
-//                    editor.commit();
-//
-//                    /* -----END SHARE PREFERENCES-----*/
-//
-//                    /*   -----REMEMBER ME-----*/
-//
-//                    if (rememberMe.isChecked()) {
-//                        editor.putString("username", ValUsername);
-//                        editor.putString("password", ValPassword);
-//                        editor.putString("isLogin", ValLogin);
-//                    } else {
-//                        editor.putString("username", "");
-//                        editor.putString("password", "");
-//                        editor.putString("isLogin", "");
-//                    }
-//                    editor.commit();
-//
-//                    /* -----END REMEMBER ME----- */
-//
-//                    Intent intent = new Intent(Login.this, Welcome.class);
-//                    intent.putExtra("username", ValUsername);
-//                    startActivity(intent);
-//                    finish();
-//
-//                    Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-//                } else {
-//
-//                    Toast.makeText(Login.this, "Username or Password is wrong.", Toast.LENGTH_SHORT).show();
-//                    Log.i("Login Screen", "In Onclick");
-//                }
             }
         });
     }
