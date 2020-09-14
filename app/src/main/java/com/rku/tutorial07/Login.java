@@ -2,15 +2,12 @@ package com.rku.tutorial07;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,9 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Login extends AppCompatActivity {
 
 
-    private EditText edtUsername, edtPassword;
-    private Button btnLogin;
-    //  CheckBox rememberMe;
+    EditText edtUsername, edtPassword;
+    Button btnLogin;
     DatabaseHelper databaseHelper;
 
     SharedPreferences preferences;
@@ -35,11 +31,10 @@ public class Login extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(this);
 
-        edtUsername = (EditText) findViewById(R.id.edtUsername);
-        edtPassword = (EditText) findViewById(R.id.edtPassword);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+        edtUsername = findViewById(R.id.edtUsername);
+        edtPassword = findViewById(R.id.edtPassword);
+        btnLogin    = findViewById(R.id.btnLogin);
 
-        // rememberMe = findViewById(R.id.rememberMe);
         preferences = getSharedPreferences("college", MODE_PRIVATE);
         editor = preferences.edit();
 
@@ -65,6 +60,8 @@ public class Login extends AppCompatActivity {
                 String ValLogin = btnLogin.getText().toString();
                 Log.i("Login Screen", "In Onclick");
 
+                /*------------------- Validation Start ---------------------*/
+
                 if (!Patterns.EMAIL_ADDRESS.matcher(ValUsername).matches()) {
                     edtUsername.setError("Email address format is not valid");
                     return;
@@ -80,6 +77,7 @@ public class Login extends AppCompatActivity {
                     return;
                 }
 
+                /*------------------- Validation End ---------------------*/
 
                 Boolean res = databaseHelper.checkUser(ValUsername, ValPassword);
 

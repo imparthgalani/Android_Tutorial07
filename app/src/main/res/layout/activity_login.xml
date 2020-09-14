@@ -40,6 +40,7 @@
                 android:fontFamily="serif"
                 android:gravity="center_horizontal"
                 android:text="@string/login"
+                android:textColor="@color/Nero"
                 android:textSize="36sp" />
 
             <LinearLayout
@@ -57,7 +58,8 @@
                     android:layout_weight="1"
                     android:fontFamily="serif"
                     android:text="@string/username"
-                    android:textSize="24sp" />
+                    android:textColor="@color/Nero"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/edtUsername"
@@ -85,7 +87,8 @@
                     android:layout_weight="1"
                     android:fontFamily="serif"
                     android:text="@string/password"
-                    android:textSize="24sp" />
+                    android:textColor="@color/Nero"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/edtPassword"
@@ -129,7 +132,7 @@
                 android:layout_marginBottom="32dp"
                 android:gravity="center"
                 android:onClick="btnSignUp"
-                android:text="Create New account ? SignUp"
+                android:text="Create New account ? Signup"
                 android:textColor="@color/Nero"
                 android:textSize="18sp" />
 

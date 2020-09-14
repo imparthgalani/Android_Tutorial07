@@ -63,8 +63,7 @@ public class RegistrationForm extends AppCompatActivity {
             edtPassword.setText("");
         }
 
-        Intent intent = new Intent(RegistrationForm.this, Welcome.class);
-        intent.putExtra("username", ValUsername);
+        Intent intent = new Intent(RegistrationForm.this, Login.class);
         startActivity(intent);
     }
 
